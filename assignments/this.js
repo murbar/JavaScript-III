@@ -12,15 +12,36 @@
 // Principle 1
 
 // code example for Window Binding
+function fun() {
+    console.log(this);
+}
+fun(); // -> window
 
 // Principle 2
 
 // code example for Implicit Binding
+const obj = {
+    prop: 'foo',
+    bar() {
+        console.log(this);
+    }
+}
+obj.bar(); // -> obj
 
 // Principle 3
 
 // code example for New Binding
+function ObjConstructor() {
+    this.prop = 'foo',
+    this.bar = function() {
+        console.log(this);
+    }
+}
+const newObj = new ObjConstructor()
+newObj.bar(); // -> ObjConstructor
 
 // Principle 4
 
 // code example for Explicit Binding
+const bound = fun.bind(obj);
+bound(); // -> obj
